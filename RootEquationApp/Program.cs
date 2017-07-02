@@ -12,6 +12,7 @@ namespace RootEquationApp
     {
         static void Main(string[] args)
         {
+            //Создаем делигаты, чтобы потом вызвать несколько раз подряд асинхронно
             Action action1 = () =>
            {
                var result = Equation.HalfDivisionMethod((x) =>

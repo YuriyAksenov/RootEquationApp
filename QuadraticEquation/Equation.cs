@@ -10,25 +10,30 @@ namespace RootEquation
     {
         public delegate double Function(double x);
 
-        public static double HalfDivisionMethod(Function func, double startPosition, double endPosition, double accuracy  = 0.00001)
+        /// <summary>
+        /// Вычисляет корень функции методом половинного деления
+        /// </summary>
+        /// <param name="func"></param>
+        /// <param name="startPosition"></param>
+        /// <param name="endPosition"></param>
+        /// <param name="accuracy"></param>
+        /// <returns></returns>
+        public static double HalfDivisionMethod(Function func, double startPosition, double endPosition, double accuracy = 0.00001)
         {
-            double middle = startPosition/2 + endPosition / 2;
+            double middle = startPosition / 2 + endPosition / 2;
             double valueStart = func(startPosition);
             double valueMiddle = func(middle);
 
             double d = valueStart * valueMiddle;
 
-            if (d > 0)
-            {
-                startPosition = middle;
-            }
-            else endPosition = middle;
+            if (d > 0) { startPosition = middle; }
+            else { endPosition = middle; }
 
             double difference = Math.Abs(startPosition - endPosition);
 
             if (difference >= accuracy) return HalfDivisionMethod(func, startPosition, endPosition, accuracy);
-            
-            return startPosition/2+ endPosition / 2;
+
+            return startPosition / 2 + endPosition / 2;
         }
 
 
